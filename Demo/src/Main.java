@@ -18,6 +18,7 @@ public class Main {
        catch (IOException e){
            e.printStackTrace();
        }
+       System.out.println("Crud operations:");
         System.out.println("1.Create");
         System.out.println("2.Retrieve");
         System.out.println("2.Update");
