@@ -24,18 +24,15 @@ public class Operation {
 
     public String number;
     Scanner sc=new Scanner(System.in);
-    public String Create() throws IOException {
+    public void Create() throws IOException {
 
         System.out.println("Enter the Name");
         name=sc.nextLine();
         System.out.println("Enter the number");
         number=sc.nextLine();
-        FileWriter fileWriter=new FileWriter("abc.txt");
-        fileWriter.write(name);
-        fileWriter.write("-");
-        fileWriter.write(number);
+        FileWriter fileWriter=new FileWriter(Main.path,true);
+        fileWriter.append(name+"-"+number+"\n");
         fileWriter.close();
-        return "true";
     }
     public String Retrieve(){
         System.out.println("Enter the Name");

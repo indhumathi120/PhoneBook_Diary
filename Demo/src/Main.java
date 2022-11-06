@@ -3,10 +3,13 @@ import java.io.*;
 import java.util.Scanner;
 
 public class Main {
+    static String path;
     public static void main(String[] args) throws IOException {
         Operation operation = new Operation();
         Scanner sc = new Scanner(System.in);
-        File file = new File("abc.txt");
+        File file = new File("Demo\\abc.txt");
+        path = file.getAbsolutePath();
+
         try {
             if (file.createNewFile()) {
                 System.out.println("File created");
@@ -16,41 +19,48 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("Crud operations:");
-        System.out.println("1.Create");
-        System.out.println("2.Retrieve");
-        System.out.println("2.Update");
-        System.out.println("3.Delete");
-
+        while (true) {
+            System.out.println("Crud operations:");
+            System.out.println("1.Create");
+            System.out.println("2.Retrieve");
+            System.out.println("3.Update");
+            System.out.println("4.Delete");
 
 
             int n = sc.nextInt();
-            switch (n) {
-                case 1:
+
+                if(n==1) {
                     System.out.println("Create");
                     operation.Create();
-                    System.exit(0);
-                case 2:
+
+                }
+                else if(n==2) {
                     System.out.println("Retrieve");
-                    Scanner scanner = new Scanner(new File("E:\\Java Programming\\PhoneBook_Diary\\Demo\\abc.txt"));
+                    Scanner scanner = new Scanner(new File(path));
                     String content = "";
                     while (scanner.hasNext()) {
-                        scanner.nextLine();
-                        content = content + scanner.nextLine();
-                        content += "/n";
+                        content += scanner.nextLine();
+                        content += "\n";
                     }
                     System.out.print(content);
-                case 3:
+                }
+                else if(n==3) {
                     System.out.println("Update");
                     operation.Update();
-                    //System.exit(0);
-                case 4:
+
+                }
+                else if (n==4) {
                     System.out.println("Delete");
                     operation.Delete();
+                }
+                else{
 
+                    break;
+                }
                     //System.exit(0);
             }
 
 
         }
     }
+
