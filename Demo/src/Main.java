@@ -1,14 +1,16 @@
-
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
+
 
 public class Main {
     static String path;
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         Operation operation = new Operation();
         Scanner sc = new Scanner(System.in);
-        File file = new File("Demo\\abc.txt");
+        File file = new File("xyz.txt");
         path = file.getAbsolutePath();
+
 
         try {
             if (file.createNewFile()) {
@@ -25,7 +27,7 @@ public class Main {
             System.out.println("2.Retrieve");
             System.out.println("3.Update");
             System.out.println("4.Delete");
-
+       //System.out.print(path);
 
             int n = sc.nextInt();
 
@@ -36,13 +38,7 @@ public class Main {
                 }
                 else if(n==2) {
                     System.out.println("Retrieve");
-                    Scanner scanner = new Scanner(new File(path));
-                    String content = "";
-                    while (scanner.hasNext()) {
-                        content += scanner.nextLine();
-                        content += "\n";
-                    }
-                    System.out.print(content);
+                    operation.Retrieve();
                 }
                 else if(n==3) {
                     System.out.println("Update");
@@ -62,5 +58,7 @@ public class Main {
 
 
         }
-    }
+
+
+}
 
