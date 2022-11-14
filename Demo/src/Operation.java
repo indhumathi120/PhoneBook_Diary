@@ -25,7 +25,7 @@ public class Operation {
     public String number;
     Scanner sc = new Scanner(System.in);
 
-    public void Create() throws IOException {
+    public void create() throws IOException {
 
         System.out.println("Enter the Name");
         name = sc.nextLine();
@@ -33,36 +33,31 @@ public class Operation {
         number = sc.nextLine();
         //list.add(name);
         FileWriter fileWriter = new FileWriter(Main.path, true);
-        fileWriter.append(name + "-" + number + "\n");
+        fileWriter.append(name + "-" + number + "\n"); // changed
+        list.add(name+"-"+number);
         fileWriter.close();
     }
 
-    public String Retrieve() throws Exception {
- //       System.out.println("Enter the Name");
+    //todo: Step 1: Load all data to a list, Step 2: Separate the name and number, Step 3: Validate the user input with the name
+    //todo: Step 4: Add the matching users in another list, Step 5: Display the list for deletion.
+    public String retrieve() throws Exception {
         Scanner scanner = new Scanner(new File(Main.path));
         String content = "";
         while (scanner.hasNext()) {
             content += scanner.nextLine();
-            content+=",";
-           list.add(content);
- //          System.out.print(",");
             content += "\n";
-
         }
         System.out.print(content);
-//        System.out.print(list);
         return "true";
     }
-    public String Update(){
-       ////add
+    public String update(){
         return "true";
 
     }
-    public boolean Delete() throws Exception{
+    public boolean delete() throws Exception{
 //        File index=new File("");
         System.out.println("Enter the name to delete:");
         String del=sc.next();
-
 
         //System.out.print(del);
         for(int i=0;i<list.size();i++){

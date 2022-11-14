@@ -33,21 +33,21 @@ public class Main {
 
                 if(n==1) {
                     System.out.println("Create");
-                    operation.Create();
+                    operation.create();
 
                 }
                 else if(n==2) {
                     System.out.println("Retrieve");
-                    operation.Retrieve();
+                    operation.retrieve();
                 }
                 else if(n==3) {
                     System.out.println("Update");
-                    operation.Update();
+                    operation.update();
 
                 }
                 else if (n==4) {
                     System.out.println("Delete");
-                    operation.Delete();
+                    operation.delete();
                 }
                 else{
 
