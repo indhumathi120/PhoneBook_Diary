@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class Operation {
     static List<String> list = new ArrayList<>();
+    static List<Integer> deletedItemList=new ArrayList<>();
 
     public void setName(String name) {
         this.name = name;
@@ -24,15 +25,21 @@ public class Operation {
 
     public String number;
     Scanner sc = new Scanner(System.in);
+    public void initiate() throws Exception{
+        Scanner scanner = new Scanner(new File(Main.path));
+        while(scanner.hasNext()){
+            list.add(scanner.nextLine());
+        }
 
+    }
     public void create() throws IOException {
 
         System.out.println("Enter the Name");
         name = sc.nextLine();
         System.out.println("Enter the number");
         number = sc.nextLine();
-        //list.add(name);
-        FileWriter fileWriter = new FileWriter(Main.path, true);
+        list.add(name);
+        FileWriter fileWriter = new FileWriter(Main.path,true);
         fileWriter.append(name + "-" + number + "\n"); // changed
         list.add(name+"-"+number);
         fileWriter.close();
@@ -56,26 +63,37 @@ public class Operation {
     }
     public boolean delete() throws Exception{
 //        File index=new File("");
+
         System.out.println("Enter the name to delete:");
         String del=sc.next();
-
+        
         //System.out.print(del);
         for(int i=0;i<list.size();i++){
-            if(list.get(i).equals(del)){
-                System.out.println("yes");
-                System.exit(0);
+
+            if(list.get(i).contains(del)){
+             deletedItemList.add(i);
             }
             else{
                 System.out.println("no");
-                System.exit(0);
+
             }
         }
-//        String[] entries = index.list();
-//        for (String s : entries) {
-//            File currentFile = new File(index.getPath(), s);
-//            currentFile.delete();
-//        }
-//        list.add=>for=>del=>equal=>check
+        for(int j=0;j<deletedItemList.size();j++){
+            System.out.println(j+1+"."+list.get(deletedItemList.get(j)));
+        }
+        System.out.println("Enter number to get delete from phone book");
+        int n=sc.nextInt();
+        sc.nextLine();
+        int index = deletedItemList.get(n-1);
+        list.remove(index);
+        deletedItemList.clear();
+        System.out.print(list);
+        FileWriter fileWriter = new FileWriter(Main.path,false);
+        for(int i=0;i<list.size();i++){
+            fileWriter.write(list.get(i));
+            fileWriter.write("\n");
+        }
+        fileWriter.close();
         return true;
     }
 }

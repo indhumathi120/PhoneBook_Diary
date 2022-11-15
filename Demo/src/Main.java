@@ -8,8 +8,9 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Operation operation = new Operation();
         Scanner sc = new Scanner(System.in);
-        File file = new File("xyz.txt");
+        File file = new File("iuy.txt");
         path = file.getAbsolutePath();
+
 
 
         try {
@@ -21,6 +22,7 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        operation.initiate();
         while (true) {
             System.out.println("Crud operations:");
             System.out.println("1.Create");
@@ -30,7 +32,7 @@ public class Main {
        //System.out.print(path);
 
             int n = sc.nextInt();
-
+            sc.nextLine();
                 if(n==1) {
                     System.out.println("Create");
                     operation.create();
